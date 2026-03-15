@@ -1,2 +1,8 @@
+```markdown
+
 # HelloApp
-The app displays "Hello World" on the console when executed. This is the most basic use case to demonstrate a simple Java application that outputs text to the console.
+
+
+Hello App starts with Hello World, progresses to displaying a user name, then names from command-line args and standard input. It then manages names in a collection with list/remove options, refactors into methods and classes, adds persistence across runs, and finally displays names in banner format.
+
+```
