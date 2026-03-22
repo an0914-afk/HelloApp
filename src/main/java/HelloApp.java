@@ -1,65 +1,46 @@
 /**
- * HelloApp – UC6 – Display "Hello" with Multiple Command-Line Arguments using
- * substring to Remove Trailing Delimiter
+ * HelloApp.java – UC7 – A simple Java application that greets multiple users by name
+ * if provided as command-line arguments using the String.join() method, or defaults
+ * to greeting "World" if no names are provided.
  *
- * UC 6: Display "Hello" with Multiple Command-Line Arguments using substring to
- * Remove Trailing Delimiter – The application should accept multiple names as
- * command-line arguments and display a personalized greeting for each user using
- * substring to remove the trailing delimiter.
+ * UC7: Display "Hello" with Multiple Command-Line Arguments using String.join() Method
+ * or Default Message – The application should accept multiple names as command-line
+ * arguments and display a personalized greeting using the String.join() method.
+ * If no names are provided, it should display "Hello, World!".
  *
  * Usage: java HelloApp [name1] [name2] ... [nameN]
- * – If names are provided, it will display "Hello, [Name1], [Name2], ...!" to the console.
- * – If no names are provided, it will display "Hello, World!"
+ * - If names are provided, it will display "Hello, Name1, Name2, ...!"
+ * - If no names are provided, it will display "Hello, World!"
  *
  * @author Aaditya Narayan
- * @version 6.0
+ * @version 7.0
  * @since UC1
  */
 
 /**
- * Key Concepts for HelloApp UC6:
- *
- * 1. Enhanced For Loop:
- * A simplified syntax for iterating over arrays without needing an index variable.
- *
- * 2. StringBuilder:
- * A mutable sequence of characters used for efficient string concatenation.
- *
- * 3. String Manipulation:
- * Using methods like substring() to modify strings after construction.
- *
- * 4. Trailing Character Removal:
- * Removing unwanted delimiters (like ", ") from the end of a string.
- *
- * 5. String Length:
- * Using length() to determine where substring() should truncate the string.
+ * Key Concepts of UC7:
+ * 1. String.join() Method: Concatenates multiple strings with a delimiter
+ * 2. Command-line Arguments: Accessing user input via args[] parameter
+ * 3. Conditional Statements: Using if to check whether arguments exist
+ * 4. Default Values: Providing fallback greeting when no arguments are given
+ * 5. Array Length Checking: Using args.length == 0 condition
+ * 6. Static Utility Methods: Calling String.join() without object creation
+ * 7. Code Simplification: Cleaner and shorter implementation without loops
  */
 
 public class HelloApp {
 
     public static void main(String[] args) {
 
-        String name;
+        // Assign default greeting target
+        String names = "World";
 
-        // Check if no arguments are provided
-        if (args.length == 0) {
-
-            name = "World";
-
-        } else {
-
-            // Build comma-separated list using enhanced for loop
-            StringBuilder nameBuilder = new StringBuilder();
-
-            for (String n : args) {
-                nameBuilder.append(n).append(", ");
-            }
-
-            // Remove trailing comma and space using substring()
-            name = nameBuilder.substring(0, nameBuilder.length() - 2);
+        // If command-line arguments exist, join them using comma delimiter
+        if (args.length > 0) {
+            names = String.join(", ", args);
         }
 
-        // Display greeting message
-        System.out.println("Hello, " + name + "!");
+        // Display greeting
+        System.out.println("Hello, " + names + "!");
     }
 }
