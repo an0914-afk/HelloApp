@@ -1,45 +1,42 @@
 /**
- * HelloApp.java – UC4 – A simple Java application that greets multiple users by name if
- * provided as command-line arguments, or defaults to greeting "World" if no names are given.
+ * HelloApp.java – UC5 – A simple Java application that greets multiple users by name
+ * using an enhanced for loop if provided as command-line arguments, or defaults to
+ * greeting "World" if no names are given.
  *
- * Greet Multiple Users – The application should accept multiple names as command-line
- * arguments and display a personalized greeting for all users.
+ * UC 5: Display "Hello" with Multiple Command-Line Arguments using Enhanced For Loop
+ * or Default Message – The application should accept multiple names as command-line
+ * arguments and display a personalized greeting using an enhanced for loop. If no
+ * names are provided, it should display "Hello, World!".
  *
  * Usage: java HelloApp [name1] [name2] ... [nameN]
  * – If names are provided, it will display "Hello, [Name1], [Name2], ...!"
  * – If no names are provided, it will display "Hello, World!"
  *
  * @author Aaditya Narayan
- * @version 4.0
+ * @version 5.0
  * @since UC1
  */
 
 /**
- * Key Concepts for HelloAppUC4:
+ * Key Concepts for HelloApp UC5:
  *
- * 1. Default Values:
- * Providing a fallback value when no input is given
+ * 1. Command-line Arguments:
+ * Accessing multiple user inputs via args[] parameter
  *
- * 2. Command-line Arguments:
- * Accessing user input via args[] parameter
+ * 2. Array Iteration:
+ * Using enhanced for loop to traverse all arguments
  *
- * 3. Conditional Statements:
- * Using if to check conditions
+ * 3. Enhanced For Loop:
+ * Simplifies iteration over arrays without manual index management
  *
- * 4. Boolean Logic:
- * Using logical conditions to control flow
+ * 4. StringBuilder:
+ * Efficiently building a string in a loop without creating multiple immutable strings
  *
- * 5. Array Length:
- * Checking the number of command-line arguments
+ * 5. Default Values:
+ * Providing a fallback when no arguments are provided
  *
- * 6. StringBuilder:
- * Efficiently building a string from multiple parts
- *
- * 7. Looping Constructs:
- * Using for loops to iterate through command-line arguments
- *
- * 8. String Concatenation:
- * Joining multiple strings with a delimiter (comma and space)
+ * 6. String Concatenation:
+ * Building the final greeting message
  */
 
 public class HelloApp {
@@ -48,26 +45,29 @@ public class HelloApp {
 
         String name;
 
-        // Check if names are provided
-        if (args.length > 0) {
+        // Check if no arguments are provided
+        if (args.length == 0) {
 
-            // Build comma-separated list of names
-            StringBuilder nameBuilder = new StringBuilder();
-
-            for (int i = 0; i < args.length; i++) {
-                nameBuilder.append(args[i]);
-
-                if (i < args.length - 1) {
-                    nameBuilder.append(", ");
-                }
-            }
-
-            name = nameBuilder.toString();
+            name = "World";
 
         } else {
 
-            // Default value if no arguments provided
-            name = "World";
+            // Build comma-separated list using enhanced for loop
+            StringBuilder nameBuilder = new StringBuilder();
+
+            boolean first = true;
+
+            for (String n : args) {
+
+                if (!first) {
+                    nameBuilder.append(", ");
+                }
+
+                nameBuilder.append(n);
+                first = false;
+            }
+
+            name = nameBuilder.toString();
         }
 
         // Display greeting message
